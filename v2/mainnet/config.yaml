@@ -1,0 +1,119 @@
+name: aave_v2_mainnet
+description: aave v2 mainnet indexer 
+networks: 
+  - id: 1
+    start_block: 11200000
+    contracts:
+      - name: AaveOracle
+        handler: ./src/EventHandlers.js
+        address:
+          - 0xA50ba011c48153De246E5192C8f9258A2ba79Ca9
+        events:
+         - event: "AssetSourceUpdated(address indexed asset, address indexed source)"
+           requiredEntities: 
+             - name: "Assetsourceupdated" 
+         - event: "FallbackOracleUpdated(address indexed fallbackOracle)"
+           requiredEntities: 
+             - name: "Fallbackoracleupdated" 
+         - event: "OwnershipTransferred(address indexed previousOwner, address indexed newOwner)"
+           requiredEntities: 
+             - name: "Ownershiptransferred" 
+         - event: "WethSet(address indexed weth)"
+           requiredEntities: 
+             - name: "Wethset"             
+      - name: Resolver #ChainlinkENSResolver 
+        handler: ./src/EventHandlers.js
+        address:
+         - 0x122eb74f9d0F1a5ed587F43D120C1c2BbDb9360B
+        events:
+         - event: "ABIChanged(bytes32 indexed node, uint256 indexed contentType)"
+           requiredEntities: 
+            - name: "Abichanged" 
+         - event: "AddrChanged(bytes32 indexed node, address a)"
+           requiredEntities: 
+            - name: "Addrchanged"            
+         - event: "AddressChanged(bytes32 indexed node, uint256 coinType, bytes newAddress);"
+           requiredEntities: 
+            - name: "Addresschanged"
+         - event: "AuthorisationChanged(bytes32 indexed node, address indexed owner, address indexed target, bool isAuthorised)"
+           requiredEntities: 
+            - name: "Authorisationchanged"
+         - event: "ContenthashChanged(bytes32 indexed node, bytes hash)"
+           requiredEntities: 
+            - name: "Contenthashchanged"
+         - event: "DNSRecordChanged(bytes32 indexed node, bytes name, uint16 resource, bytes record)"
+           requiredEntities: 
+            - name: "Dnsrecordchanged"
+         - event: "DNSRecordDeleted(bytes32 indexed node, bytes name, uint16 resource)"
+           requiredEntities: 
+            - name: "Dnsrecorddeleted"
+         - event: "DNSZoneCleared(bytes32 indexed node)"
+           requiredEntities: 
+            - name: "Dnszonecleared"
+         - event: "DNSZonehashChanged(bytes32 indexed node, bytes lastzonehash, bytes zonehash)"
+           requiredEntities: 
+            - name: "Dnszonehashchanged" 
+         - event: "InterfaceChanged(bytes32 indexed node, bytes4 indexed interfaceID, address implementer)"
+           requiredEntities: 
+            - name: "Interfacechanged"
+         - event: "NameChanged(bytes32 indexed node, string name)"
+           requiredEntities: 
+            - name: "Namechanged"
+         - event: "PubkeyChanged(bytes32 indexed node, bytes32 x, bytes32 y)"
+           requiredEntities: 
+            - name: "Pubkeychanged"
+         - event: "TextChanged(bytes32 indexed node, string indexed indexedKey, string key)"
+           requiredEntities: 
+            - name: "Textchanged"                                                                     
+      - name: SourcesRegistry #ChainlinkSourcesRegistry
+        handler: ./src/EventHandlers.js
+        address:
+          - 0x39fEef0534a837571daF660df9B9F1Ee1bCE441a
+        events:
+         - event: "AggregatorUpdated(address token, address aggregator)"
+           requiredEntities: 
+             - name: "Aggregatorupdated"
+      - name: ProviderRegistry #LendingPoolAddressesProviderRegistry
+        handler: ./src/EventHandlers.js
+        address:
+          - 0x52D306e36E3B6B02c153d0266ff0f85d18BCD413
+        events:
+         - event: "AddressesProviderRegistered(address indexed newAddress)"
+           requiredEntities: 
+             - name: "Addressesproviderregistered"
+         - event: "AddressesProviderUnregistered(address indexed newAddress)"
+           requiredEntities: 
+            - name: "Addressesproviderunregistered"
+         - event: "OwnershipTransferred(address indexed previousOwner, address indexed newOwner)"
+           requiredEntities: 
+            - name: "Ownershiptransferred"
+      - name: OracleAnchor 
+        handler: ./src/EventHandlers.js
+        address:
+          - 0x59454304BAEfA37F299fFE6237e5467223d28261
+        events:
+         - event: "AssetSourceUpdated(address indexed token, address indexed source)"
+           requiredEntities: 
+             - name: "Assetsourceupdated"
+      - name: SwapAdapter #UniswapLiquiditySwapAdapter
+        handler: ./src/EventHandlers.js
+        address:
+          - 0x63a3f444e97d14e671e7ee323c4234c8095e3516
+        events:
+         - event: "OwnershipTransferred(address indexed previousOwner, address indexed newOwner)"
+           requiredEntities: 
+             - name: "Ownershiptransferred"
+         - event: "Swapped(address fromAsset, address toAsset, uint256 fromAmount, uint256 receivedAmount)"
+           requiredEntities: 
+            - name: "Swapped"         
+      - name: UniswapRepayAdapter
+        handler: ./src/EventHandlers.js
+        address:
+          - 0x498c5431eb517101582988fbb36431ddaac8f4b1
+        events:
+         - event: "OwnershipTransferred(address indexed previousOwner, address indexed newOwner)"
+           requiredEntities: 
+             - name: "Ownershiptransferred"
+         - event: "Swapped(address fromAsset, address toAsset, uint256 fromAmount, uint256 receivedAmount)"
+           requiredEntities: 
+            - name: "Swapped"

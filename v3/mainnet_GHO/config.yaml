@@ -1,0 +1,65 @@
+name: aave_v3_mainnet_GHO
+description: aave v3 mainnet GHO indexer 
+networks: 
+  - id: 1
+    start_block: 17690000
+    contracts:
+      - name: GhoFlashMinter
+        handler: ./src/EventHandlers.js
+        address:
+          - 0xb639D208Bcf0589D54FaC24E655C79EC529762B8
+        events:
+         - event: "FeeUpdated(uint256 oldFee, uint256 newFee)"
+           requiredEntities: 
+             - name: "Feeupdated" 
+         - event: "FeesDistributedToTreasury(address indexed ghoTreasury, address indexed asset, uint256 amount)"
+           requiredEntities: 
+             - name: "Feesdistributedtotreasury" 
+         - event: "FlashMint(address indexed receiver, address indexed initiator, address asset, uint256 indexed amount, uint256 fee)"
+           requiredEntities: 
+             - name: "Flashmint" 
+         - event: "GhoTreasuryUpdated(address indexed oldGhoTreasury, address indexed newGhoTreasury)"
+           requiredEntities: 
+             - name: "Ghotreasuryupdated"             
+      - name: GhoToken 
+        handler: ./src/EventHandlers.js
+        address:
+         - 0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f
+        events:
+         - event: "Approval(address indexed owner, address indexed spender, uint256 value)"
+           requiredEntities: 
+            - name: "Approval" 
+         - event: "FacilitatorAdded(address indexed facilitatorAddress, bytes32 indexed label, uint256 bucketCapacity)"
+           requiredEntities: 
+            - name: "Facilitatoradded"            
+         - event: "FacilitatorBucketCapacityUpdated(address indexed facilitatorAddress, uint256 oldCapacity, uint256 newCapacity)"
+           requiredEntities: 
+            - name: "Facilitatorbucketcapacityupdated"
+         - event: "FacilitatorBucketLevelUpdated(address indexed facilitatorAddress, uint256 oldLevel, uint256 newLevel)"
+           requiredEntities: 
+            - name: "Facilitatorbucketlevelupdated"
+         - event: "FacilitatorRemoved(address indexed facilitatorAddress)"
+           requiredEntities: 
+            - name: "Facilitatorremoved"
+         - event: "RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole)"
+           requiredEntities: 
+            - name: "Roleadminchanged"
+         - event: "RoleGranted(bytes32 indexed role, address indexed account, address indexed sender)"
+           requiredEntities: 
+            - name: "Rolegranted"
+         - event: "RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender)"
+           requiredEntities: 
+            - name: "Rolerevoked"
+         - event: "Transfer(address indexed from, address indexed to, uint256 value)"
+           requiredEntities: 
+            - name: "Transfer"                                                                      
+      - name: GhoVar #GhoVariableDebtToken
+        handler: ./src/EventHandlers.js
+        address:
+          - 0x786dBff3f1292ae8F92ea68Cf93c30b34B1ed04B
+        events:
+         - event: "Upgraded(address indexed implementation)"
+           requiredEntities: 
+             - name: "Upgraded"
+
+         

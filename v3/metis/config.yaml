@@ -1,0 +1,60 @@
+name: aave_v3_metis 
+description: aave v3 metis indexer 
+networks: 
+  - id: 1088
+    start_block: 5440000 
+    contracts:
+      - name: AaveOracle
+        handler: ./src/EventHandlers.js
+        address:
+          - 0x38D36e85E47eA6ff0d18B0adF12E5fC8984A6f8e
+        events:
+         - event: "AssetSourceUpdated(address indexed asset, address indexed source)"
+           requiredEntities: 
+             - name: "Assetsourceupdated" 
+         - event: "FallbackOracleUpdated(address indexed fallbackOracle)"
+           requiredEntities:
+             - name: "Fallbackoracleupdated"
+         - event: "BaseCurrencySet(address indexed baseCurrency, uint256 baseCurrencyUnit)"
+           requiredEntities: 
+             - name: "Basecurrencyset" 
+      - name: Pool #PoolAddressesProviderRegistry
+        handler: ./src/EventHandlers.js
+        address:
+         - 0x9E7B73ffD9D2026F3ff4212c29E209E09C8A91F5
+        events:
+         - event: "AddressesProviderRegistered(address indexed addressesProvider, uint256 indexed id)"
+           requiredEntities: 
+            - name: "Addressesproviderregistered"
+         - event: "AddressesProviderUnregistered(address indexed addressesProvider, uint256 indexed id)"
+           requiredEntities: 
+             - name: "Addressesproviderunregistered"
+         - event: "OwnershipTransferred(address indexed previousOwner, address indexed newOwner)"
+           requiredEntities: 
+             - name: "Ownershiptransferred"
+      - name: Rewards #RewardsController
+        handler: ./src/EventHandlers.js
+        address:
+          - 0x30C1b8F0490fa0908863d6Cbd2E36400b4310A6B
+        events:
+         - event: "AssetConfigUpdated(address indexed asset, address indexed reward, uint256 oldEmission, uint256 newEmission, uint256 oldDistributionEnd, uint256 newDistributionEnd, uint256 assetIndex)"
+           requiredEntities: 
+             - name: "Assetconfigupdated"
+         - event: "Accrued(address indexed asset, address indexed reward, address indexed user, uint256 assetIndex, uint256 userIndex, uint256 rewardsAccrued)"
+           requiredEntities: 
+              - name: "Accrued"
+         - event: "RewardsClaimed(address indexed user, address indexed reward, address indexed to, address claimer, uint256 amount)"
+           requiredEntities: 
+             - name: "Rewardsclaimed"
+         - event: "RewardOracleUpdated(address indexed reward, address indexed rewardOracle)"
+           requiredEntities: 
+            - name: "Rewardoracleupdated"
+         - event: "EmissionManagerUpdated(address indexed oldEmissionManager, address indexed newEmissionManager)"
+           requiredEntities: 
+             - name: "Emissionmanagerupdated"
+         - event: "ClaimerSet(address indexed user, address indexed claimer)"
+           requiredEntities: 
+             - name: "Claimerset"
+         - event: "TransferStrategyInstalled(address indexed reward, address indexed transferStrategy)" 
+           requiredEntities: 
+             - name: "Transferstrategyinstalled"

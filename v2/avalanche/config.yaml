@@ -1,0 +1,45 @@
+name: aave_v2_avalanche
+description: aave v2 avalanche indexer 
+networks: 
+  - id: 43114
+    start_block: 4600000
+    contracts:
+      - name: AaveOracle
+        handler: ./src/EventHandlers.js
+        address:
+          - 0xdC336Cd4769f4cC7E9d726DA53e6d3fC710cEB89
+        events:
+         - event: "AssetSourceUpdated(address indexed asset, address indexed source)"
+           requiredEntities: 
+             - name: "Assetsourceupdated" 
+         - event: "FallbackOracleUpdated(address indexed fallbackOracle)"
+           requiredEntities: 
+             - name: "Fallbackoracleupdated" 
+         - event: "OwnershipTransferred(address indexed previousOwner, address indexed newOwner)"
+           requiredEntities: 
+             - name: "Ownershiptransferred" 
+         - event: "WethSet(address indexed weth)"
+           requiredEntities: 
+             - name: "Wethset"             
+      - name: SourcesRegistry #ChainlinkSourcesRegistry
+        handler: ./src/EventHandlers.js
+        address:
+          - 0x195Bd5faf93e0a04a8C00C680911D6e249F68669
+        events:
+         - event: "AggregatorUpdated(address token, address aggregator)"
+           requiredEntities: 
+             - name: "Aggregatorupdated"
+      - name: ProviderRegistry #LendingPoolAddressesProviderRegistry
+        handler: ./src/EventHandlers.js
+        address:
+          - 0x4235E22d9C3f28DCDA82b58276cb6370B01265C2
+        events:
+         - event: "AddressesProviderRegistered(address indexed newAddress)"
+           requiredEntities: 
+             - name: "Addressesproviderregistered"
+         - event: "AddressesProviderUnregistered(address indexed newAddress)"
+           requiredEntities: 
+            - name: "Addressesproviderunregistered"
+         - event: "OwnershipTransferred(address indexed previousOwner, address indexed newOwner)"
+           requiredEntities: 
+            - name: "Ownershiptransferred"

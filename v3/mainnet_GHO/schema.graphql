@@ -1,0 +1,135 @@
+type Feeupdated @entity {
+  id: ID!
+  oldFee: BigInt!
+  newFee: BigInt!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Feesdistributedtotreasury @entity {
+  id: ID!
+  ghoTreasury: Bytes!
+  asset: Bytes!
+  amount: BigInt!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Flashmint @entity {
+  id: ID!
+  receiver: Bytes!
+  initiator: Bytes!
+  asset: Bytes!
+  amount: BigInt!
+  fee: BigInt!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Ghotreasuryupdated @entity {
+  id: ID!
+  oldGhoTreasury: Bytes!
+  newGhoTreasury: Bytes!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Approval @entity {
+  id: ID!
+  owner: Bytes!
+  spender: Bytes!
+  value: BigInt!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Facilitatoradded @entity {
+  id: ID!
+  facilitatorAddress: Bytes!
+  label: String!
+  bucketCapacity: BigInt!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Facilitatorbucketcapacityupdated @entity {
+  id: ID!
+  facilitatorAddress: Bytes!
+  oldCapacity: BigInt!
+  newCapacity: BigInt!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Facilitatorbucketlevelupdated @entity {
+  id: ID!
+  facilitatorAddress: Bytes!
+  oldLevel: BigInt!
+  newLevel: BigInt!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Facilitatorremoved @entity {
+  id: ID!
+  facilitatorAddress: Bytes!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Roleadminchanged @entity {
+  id: ID!
+  role: String!
+  previousAdminRole: String!
+  newAdminRole: String!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Rolegranted @entity {
+  id: ID!
+  role: String!
+  account: Bytes!
+  sender: Bytes!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Rolerevoked @entity {
+  id: ID!
+  role: String!
+  account: Bytes!
+  sender: Bytes!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Transfer @entity {
+  id: ID!
+  from: Bytes!
+  to: Bytes!
+  value: BigInt!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Upgraded @entity {
+  id: ID!
+  implementation: Bytes!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}

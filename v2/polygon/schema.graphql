@@ -1,0 +1,58 @@
+type Assetsourceupdated @entity {
+  id: ID!
+  asset: Bytes!
+  source: Bytes!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Fallbackoracleupdated @entity {
+  id: ID!
+  fallbackOracle: Bytes!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Ownershiptransferred @entity {
+  id: ID!
+  previousOwner: Bytes!
+  newOwner: Bytes!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Wethset @entity {
+  id: ID!
+  weth: Bytes!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Aggregatorupdated @entity {
+  id: ID!
+  token: Bytes!
+  aggregator: Bytes!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Addressesproviderregistered @entity {
+  id: ID!
+  newAddress: Bytes!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
+
+type Addressesproviderunregistered @entity {
+  id: ID!
+  newAddress: Bytes!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+}
