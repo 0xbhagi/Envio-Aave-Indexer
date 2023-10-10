@@ -1,4 +1,4 @@
-name: aave_v3_mainnet_GHO
+name: aave_v3_mainnet_gho
 description: aave v3 mainnet GHO indexer 
 networks: 
   - id: 1

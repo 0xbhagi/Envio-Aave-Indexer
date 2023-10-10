@@ -88,7 +88,7 @@ GhoFlashMinterContract.GhoTreasuryUpdated.handler ((event, context) => {
         evtBlockNum: event.blockNumber,
         contractAddress: event.srcAddress
       };
-      context.Feeupdated.set(entity);
+      context.Ghotreasuryupdated.set(entity);
     }
   });  
  // Approval event handler 
