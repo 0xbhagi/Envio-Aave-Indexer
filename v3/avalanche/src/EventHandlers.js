@@ -1,38 +1,38 @@
 /*
  *Please refer to https://docs.envio.dev for a thorough guide on all Envio indexer features*
  */
- let { 
-    RewardsContract, 
-    AaveOracleContract, 
-    PoolContract,
+let {
+  RewardsContract,
+  AaveOracleContract,
+  PoolContract,
 } = require("../generated/src/Handlers.bs.js");
 
- // AssetSourceUpdated event handler 
-AaveOracleContract.AssetSourceUpdated.loader ((event, context) => {
-    context.Assetsourceupdated.load(event.transactionHash);
-  });
-  
-AaveOracleContract.AssetSourceUpdated.handler ((event, context) => {
-    let entity = context.Assetsourceupdated.get(event.transactionHash);
-  
-    if (!entity) {
-      entity = {
-        id: event.transactionHash,
-        asset: event.params.asset,
-        source: event.params.source,
-        evtBlockTime: event.blockTimestamp,
-        evtBlockNum: event.blockNumber,
-        contractAddress: event.srcAddress
-      };
-      context.Assetsourceupdated.set(entity);
-    }
-  });
+// AssetSourceUpdated event handler 
+AaveOracleContract.AssetSourceUpdated.loader((event, context) => {
+  context.Assetsourceupdated.load(event.transactionHash);
+});
+
+AaveOracleContract.AssetSourceUpdated.handler((event, context) => {
+  let entity = context.Assetsourceupdated.get(event.transactionHash);
+
+  if (!entity) {
+    entity = {
+      id: event.transactionHash,
+      asset: event.params.asset,
+      source: event.params.source,
+      evtBlockTime: event.blockTimestamp,
+      evtBlockNum: event.blockNumber,
+      contractAddress: event.srcAddress
+    };
+    context.Assetsourceupdated.set(entity);
+  }
+});
 // FallbackOracleUpdated Event Handler 
-AaveOracleContract.FallbackOracleUpdated.loader ((event, context) => {
+AaveOracleContract.FallbackOracleUpdated.loader((event, context) => {
   context.Fallbackoracleupdated.load(event.transactionHash);
 });
 
-AaveOracleContract.FallbackOracleUpdated.handler ((event, context) => {
+AaveOracleContract.FallbackOracleUpdated.handler((event, context) => {
   let entity = context.Fallbackoracleupdated.get(event.transactionHash);
 
   if (!entity) {
@@ -48,11 +48,11 @@ AaveOracleContract.FallbackOracleUpdated.handler ((event, context) => {
 });
 
 // BaseCurrencySet Event Handler 
-AaveOracleContract.BaseCurrencySet.loader ((event, context) => {
+AaveOracleContract.BaseCurrencySet.loader((event, context) => {
   context.Basecurrencyset.load(event.transactionHash);
 });
 
-AaveOracleContract.BaseCurrencySet.handler ((event, context) => {
+AaveOracleContract.BaseCurrencySet.handler((event, context) => {
   let entity = context.Basecurrencyset.get(event.transactionHash);
 
   if (!entity) {
@@ -68,18 +68,18 @@ AaveOracleContract.BaseCurrencySet.handler ((event, context) => {
   }
 });
 // AssetSourceUpdated event handler 
-PoolContract.AddressesProviderRegistered.loader ((event, context) => {
+PoolContract.AddressesProviderRegistered.loader((event, context) => {
   context.Addressesproviderregistered.load(event.transactionHash);
 });
 
-PoolContract.AddressesProviderRegistered.handler ((event, context) => {
+PoolContract.AddressesProviderRegistered.handler((event, context) => {
   let entity = context.Addressesproviderregistered.get(event.transactionHash);
 
   if (!entity) {
     entity = {
       id: event.transactionHash,
       addressesProvider: event.params.addressesProvider,
-      idValue: event.params.idValue,
+      idValue: event.params.id,
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
       contractAddress: event.srcAddress,
@@ -89,18 +89,18 @@ PoolContract.AddressesProviderRegistered.handler ((event, context) => {
 });
 
 //AddressesProviderUnregistered event handler 
-PoolContract.AddressesProviderUnregistered.loader ((event, context) => {
+PoolContract.AddressesProviderUnregistered.loader((event, context) => {
   context.Addressesproviderunregistered.load(event.transactionHash);
 });
 
-PoolContract.AddressesProviderUnregistered.handler ((event, context) => {
+PoolContract.AddressesProviderUnregistered.handler((event, context) => {
   let entity = context.Addressesproviderunregistered.get(event.transactionHash);
 
   if (!entity) {
     entity = {
       id: event.transactionHash,
       addressesProvider: event.params.addressesProvider,
-      idValue: event.params.idValue,
+      idValue: event.params.id,
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
       contractAddress: event.srcAddress,
@@ -110,11 +110,11 @@ PoolContract.AddressesProviderUnregistered.handler ((event, context) => {
 });
 
 // OwnershipTransferred event handler 
-PoolContract.OwnershipTransferred.loader ((event, context) => {
+PoolContract.OwnershipTransferred.loader((event, context) => {
   context.Ownershiptransferred.load(event.transactionHash);
 });
 
-PoolContract.OwnershipTransferred.handler ((event, context) => {
+PoolContract.OwnershipTransferred.handler((event, context) => {
   let entity = context.Ownershiptransferred.get(event.transactionHash);
 
   if (!entity) {
@@ -130,11 +130,11 @@ PoolContract.OwnershipTransferred.handler ((event, context) => {
   }
 });
 // AssetConfigUpdated event handler 
-RewardsContract.AssetConfigUpdated.loader ((event, context) => {
+RewardsContract.AssetConfigUpdated.loader((event, context) => {
   context.Assetconfigupdated.load(event.transactionHash);
 });
 
-RewardsContract.AssetConfigUpdated.handler ((event, context) => {
+RewardsContract.AssetConfigUpdated.handler((event, context) => {
   let entity = context.Assetconfigupdated.get(event.transactionHash);
 
   if (!entity) {
@@ -152,15 +152,15 @@ RewardsContract.AssetConfigUpdated.handler ((event, context) => {
       contractAddress: event.srcAddress,
     };
     context.Assetconfigupdated.set(entity);
-  }  
+  }
 });
 
 // Accrued event handler 
-RewardsContract.Accrued.loader ((event, context) => {
+RewardsContract.Accrued.loader((event, context) => {
   context.Accrued.load(event.transactionHash);
 });
 
-RewardsContract.Accrued.handler ((event, context) => {
+RewardsContract.Accrued.handler((event, context) => {
   let entity = context.Accrued.get(event.transactionHash);
 
   if (!entity) {
@@ -177,15 +177,15 @@ RewardsContract.Accrued.handler ((event, context) => {
       contractAddress: event.srcAddress,
     };
     context.Accrued.set(entity);
-  }  
+  }
 });
 
 // RewardsClaimed event handler 
-RewardsContract.RewardsClaimed.loader ((event, context) => {
+RewardsContract.RewardsClaimed.loader((event, context) => {
   context.Rewardsclaimed.load(event.transactionHash);
 });
 
-RewardsContract.RewardsClaimed.handler ((event, context) => {
+RewardsContract.RewardsClaimed.handler((event, context) => {
   let entity = context.Rewardsclaimed.get(event.transactionHash);
 
   if (!entity) {
@@ -205,11 +205,11 @@ RewardsContract.RewardsClaimed.handler ((event, context) => {
 });
 
 // RewardOracleUpdated event handler 
-RewardsContract.RewardOracleUpdated.loader ((event, context) => {
+RewardsContract.RewardOracleUpdated.loader((event, context) => {
   context.Rewardoracleupdated.load(event.transactionHash);
 });
 
-RewardsContract.RewardOracleUpdated.handler ((event, context) => {
+RewardsContract.RewardOracleUpdated.handler((event, context) => {
   let entity = context.Rewardoracleupdated.get(event.transactionHash);
 
   if (!entity) {
@@ -226,11 +226,11 @@ RewardsContract.RewardOracleUpdated.handler ((event, context) => {
 });
 
 // EmissionManagerUpdated event handler 
-RewardsContract.EmissionManagerUpdated.loader ((event, context) => {
+RewardsContract.EmissionManagerUpdated.loader((event, context) => {
   context.Emissionmanagerupdated.load(event.transactionHash);
 });
 
-RewardsContract.EmissionManagerUpdated.handler ((event, context) => {
+RewardsContract.EmissionManagerUpdated.handler((event, context) => {
   let entity = context.Emissionmanagerupdated.get(event.transactionHash);
 
   if (!entity) {
@@ -247,11 +247,11 @@ RewardsContract.EmissionManagerUpdated.handler ((event, context) => {
 });
 
 // ClaimerSet event handler 
-RewardsContract.ClaimerSet.loader ((event, context) => {
+RewardsContract.ClaimerSet.loader((event, context) => {
   context.Claimerset.load(event.transactionHash);
 });
 
-RewardsContract.ClaimerSet.handler ((event, context) => {
+RewardsContract.ClaimerSet.handler((event, context) => {
   let entity = context.Claimerset.get(event.transactionHash);
 
   if (!entity) {
@@ -268,11 +268,11 @@ RewardsContract.ClaimerSet.handler ((event, context) => {
 });
 
 // TransferStrategyInstalled event handler 
-RewardsContract.TransferStrategyInstalled.loader ((event, context) => {
+RewardsContract.TransferStrategyInstalled.loader((event, context) => {
   context.Transferstrategyinstalled.load(event.transactionHash);
 });
 
-RewardsContract.TransferStrategyInstalled.handler ((event, context) => {
+RewardsContract.TransferStrategyInstalled.handler((event, context) => {
   let entity = context.Transferstrategyinstalled.get(event.transactionHash);
 
   if (!entity) {
@@ -285,6 +285,5 @@ RewardsContract.TransferStrategyInstalled.handler ((event, context) => {
       contractAddress: event.srcAddress,
     };
     context.Transferstrategyinstalled.set(entity);
-  } 
+  }
 });
-  
