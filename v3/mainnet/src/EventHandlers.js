@@ -9,39 +9,46 @@ let {
 
 // AssetSourceUpdated event handler 
 AaveOracleContract.AssetSourceUpdated.loader((event, context) => {
-  context.Assetsourceupdated.load(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  context.Assetsourceupdated.load(uniqueId);
 });
 
 AaveOracleContract.AssetSourceUpdated.handler((event, context) => {
-  let entity = context.Assetsourceupdated.get(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  let entity = context.Assetsourceupdated.get(uniqueId);
 
   if (!entity) {
     entity = {
-      id: event.transactionHash,
+      id: uniqueId,
       asset: event.params.asset,
       source: event.params.source,
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
-      contractAddress: event.srcAddress
+      contractAddress: event.srcAddress,
+      evtTxnHash: event.transactionHash
     };
     context.Assetsourceupdated.set(entity);
   }
 });
+
 // FallbackOracleUpdated Event Handler 
 AaveOracleContract.FallbackOracleUpdated.loader((event, context) => {
-  context.Fallbackoracleupdated.load(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  context.Fallbackoracleupdated.load(uniqueId);
 });
 
 AaveOracleContract.FallbackOracleUpdated.handler((event, context) => {
-  let entity = context.Fallbackoracleupdated.get(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  let entity = context.Fallbackoracleupdated.get(uniqueId);
 
   if (!entity) {
     entity = {
-      id: event.transactionHash,
+      id: uniqueId,
       fallbackOracle: event.params.fallbackOracle,
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
-      contractAddress: event.srcAddress
+      contractAddress: event.srcAddress,
+      evtTxnHash: event.transactionHash
     };
     context.Fallbackoracleupdated.set(entity);
   }
@@ -49,40 +56,46 @@ AaveOracleContract.FallbackOracleUpdated.handler((event, context) => {
 
 // BaseCurrencySet Event Handler 
 AaveOracleContract.BaseCurrencySet.loader((event, context) => {
-  context.Basecurrencyset.load(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  context.Basecurrencyset.load(uniqueId);
 });
 
 AaveOracleContract.BaseCurrencySet.handler((event, context) => {
-  let entity = context.Basecurrencyset.get(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  let entity = context.Basecurrencyset.get(uniqueId);
 
   if (!entity) {
     entity = {
-      id: event.transactionHash,
+      id: uniqueId,
       baseCurrency: event.params.baseCurrency,
       baseCurrencyUnit: event.params.baseCurrencyUnit,
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
-      contractAddress: event.srcAddress
+      contractAddress: event.srcAddress,
+      evtTxnHash: event.transactionHash
     };
     context.Basecurrencyset.set(entity);
   }
 });
 // AssetSourceUpdated event handler 
 PoolContract.AddressesProviderRegistered.loader((event, context) => {
-  context.Addressesproviderregistered.load(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  context.Addressesproviderregistered.load(uniqueId);
 });
 
 PoolContract.AddressesProviderRegistered.handler((event, context) => {
-  let entity = context.Addressesproviderregistered.get(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  let entity = context.Addressesproviderregistered.get(uniqueId);
 
   if (!entity) {
     entity = {
-      id: event.transactionHash,
+      id: uniqueId,
       addressesProvider: event.params.addressesProvider,
       idValue: event.params.id,
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
       contractAddress: event.srcAddress,
+      evtTxnHash: event.transactionHash,
     };
     context.Addressesproviderregistered.set(entity);
   }
@@ -90,20 +103,23 @@ PoolContract.AddressesProviderRegistered.handler((event, context) => {
 
 //AddressesProviderUnregistered event handler 
 PoolContract.AddressesProviderUnregistered.loader((event, context) => {
-  context.Addressesproviderunregistered.load(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  context.Addressesproviderunregistered.load(uniqueId);
 });
 
 PoolContract.AddressesProviderUnregistered.handler((event, context) => {
-  let entity = context.Addressesproviderunregistered.get(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  let entity = context.Addressesproviderunregistered.get(uniqueId);
 
   if (!entity) {
     entity = {
-      id: event.transactionHash,
+      id: uniqueId,
       addressesProvider: event.params.addressesProvider,
       idValue: event.params.id,
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
       contractAddress: event.srcAddress,
+      evtTxnHash: event.transactionHash,
     };
     context.Addressesproviderunregistered.set(entity);
   }
@@ -111,35 +127,40 @@ PoolContract.AddressesProviderUnregistered.handler((event, context) => {
 
 // OwnershipTransferred event handler 
 PoolContract.OwnershipTransferred.loader((event, context) => {
-  context.Ownershiptransferred.load(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  context.Ownershiptransferred.load(uniqueId);
 });
 
 PoolContract.OwnershipTransferred.handler((event, context) => {
-  let entity = context.Ownershiptransferred.get(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  let entity = context.Ownershiptransferred.get(uniqueId);
 
   if (!entity) {
     entity = {
-      id: event.transactionHash,
+      id: uniqueId,
       previousOwner: event.params.previousOwner,
       newOwner: event.params.newOwner,
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
       contractAddress: event.srcAddress,
+      evtTxnHash: event.transactionHash,
     };
     context.Ownershiptransferred.set(entity);
   }
 });
 // AssetConfigUpdated event handler 
 RewardsContract.AssetConfigUpdated.loader((event, context) => {
-  context.Assetconfigupdated.load(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  context.Assetconfigupdated.load(uniqueId);
 });
 
 RewardsContract.AssetConfigUpdated.handler((event, context) => {
-  let entity = context.Assetconfigupdated.get(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  let entity = context.Assetconfigupdated.get(uniqueId);
 
   if (!entity) {
     entity = {
-      id: event.transactionHash,
+      id: uniqueId,
       asset: event.params.asset,
       reward: event.params.reward,
       oldEmission: event.params.oldEmission,
@@ -150,6 +171,7 @@ RewardsContract.AssetConfigUpdated.handler((event, context) => {
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
       contractAddress: event.srcAddress,
+      evtTxnHash: event.transactionHash,
     };
     context.Assetconfigupdated.set(entity);
   }
@@ -157,15 +179,17 @@ RewardsContract.AssetConfigUpdated.handler((event, context) => {
 
 // Accrued event handler 
 RewardsContract.Accrued.loader((event, context) => {
-  context.Accrued.load(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  context.Accrued.load(uniqueId);
 });
 
 RewardsContract.Accrued.handler((event, context) => {
-  let entity = context.Accrued.get(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  let entity = context.Accrued.get(uniqueId);
 
   if (!entity) {
     entity = {
-      id: event.transactionHash,
+      id: uniqueId,
       asset: event.params.asset,
       reward: event.params.reward,
       user: event.params.user,
@@ -175,6 +199,7 @@ RewardsContract.Accrued.handler((event, context) => {
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
       contractAddress: event.srcAddress,
+      evtTxnHash: event.transactionHash,
     };
     context.Accrued.set(entity);
   }
@@ -182,15 +207,17 @@ RewardsContract.Accrued.handler((event, context) => {
 
 // RewardsClaimed event handler 
 RewardsContract.RewardsClaimed.loader((event, context) => {
-  context.Rewardsclaimed.load(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  context.Rewardsclaimed.load(uniqueId);
 });
 
 RewardsContract.RewardsClaimed.handler((event, context) => {
-  let entity = context.Rewardsclaimed.get(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  let entity = context.Rewardsclaimed.get(uniqueId);
 
   if (!entity) {
     entity = {
-      id: event.transactionHash,
+      id: uniqueId,
       user: event.params.user,
       reward: event.params.reward,
       to: event.params.to,
@@ -199,6 +226,7 @@ RewardsContract.RewardsClaimed.handler((event, context) => {
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
       contractAddress: event.srcAddress,
+      evtTxnHash: event.transactionHash,
     };
     context.Rewardsclaimed.set(entity);
   }
@@ -206,20 +234,23 @@ RewardsContract.RewardsClaimed.handler((event, context) => {
 
 // RewardOracleUpdated event handler 
 RewardsContract.RewardOracleUpdated.loader((event, context) => {
-  context.Rewardoracleupdated.load(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  context.Rewardoracleupdated.load(uniqueId);
 });
 
 RewardsContract.RewardOracleUpdated.handler((event, context) => {
-  let entity = context.Rewardoracleupdated.get(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  let entity = context.Rewardoracleupdated.get(uniqueId);
 
   if (!entity) {
     entity = {
-      id: event.transactionHash,
+      id: uniqueId,
       reward: event.params.reward,
       rewardOracle: event.params.rewardOracle,
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
       contractAddress: event.srcAddress,
+      evtTxnHash: event.transactionHash,
     };
     context.Rewardoracleupdated.set(entity);
   }
@@ -227,20 +258,23 @@ RewardsContract.RewardOracleUpdated.handler((event, context) => {
 
 // EmissionManagerUpdated event handler 
 RewardsContract.EmissionManagerUpdated.loader((event, context) => {
-  context.Emissionmanagerupdated.load(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  context.Emissionmanagerupdated.load(uniqueId);
 });
 
 RewardsContract.EmissionManagerUpdated.handler((event, context) => {
-  let entity = context.Emissionmanagerupdated.get(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  let entity = context.Emissionmanagerupdated.get(uniqueId);
 
   if (!entity) {
     entity = {
-      id: event.transactionHash,
+      id: uniqueId,
       oldEmissionManager: event.params.oldEmissionManager,
       newEmissionManager: event.params.newEmissionManager,
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
       contractAddress: event.srcAddress,
+      evtTxnHash: event.transactionHash,
     };
     context.Emissionmanagerupdated.set(entity);
   }
@@ -248,20 +282,23 @@ RewardsContract.EmissionManagerUpdated.handler((event, context) => {
 
 // ClaimerSet event handler 
 RewardsContract.ClaimerSet.loader((event, context) => {
-  context.Claimerset.load(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  context.Claimerset.load(uniqueId);
 });
 
 RewardsContract.ClaimerSet.handler((event, context) => {
-  let entity = context.Claimerset.get(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  let entity = context.Claimerset.get(uniqueId);
 
   if (!entity) {
     entity = {
-      id: event.transactionHash,
+      id: uniqueId,
       user: event.params.user,
       claimer: event.params.claimer,
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
       contractAddress: event.srcAddress,
+      evtTxnHash: event.transactionHash,
     };
     context.Claimerset.set(entity);
   }
@@ -269,20 +306,23 @@ RewardsContract.ClaimerSet.handler((event, context) => {
 
 // TransferStrategyInstalled event handler 
 RewardsContract.TransferStrategyInstalled.loader((event, context) => {
-  context.Transferstrategyinstalled.load(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  context.Transferstrategyinstalled.load(uniqueId);
 });
 
 RewardsContract.TransferStrategyInstalled.handler((event, context) => {
-  let entity = context.Transferstrategyinstalled.get(event.transactionHash);
+  let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
+  let entity = context.Transferstrategyinstalled.get(uniqueId);
 
   if (!entity) {
     entity = {
-      id: event.transactionHash,
+      id: uniqueId,
       reward: event.params.reward,
       transferStrategy: event.params.transferStrategy,
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
       contractAddress: event.srcAddress,
+      evtTxnHash: event.transactionHash,
     };
     context.Transferstrategyinstalled.set(entity);
   }

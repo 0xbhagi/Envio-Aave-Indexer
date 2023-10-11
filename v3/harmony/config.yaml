@@ -2,6 +2,11 @@ name: aave_v3_harmony
 description: aave v3 harmony indexer 
 networks: 
   - id: 1666600000
+    rpc_config:
+      url: https://api.harmony.one
+      unstable__sync_config:
+        initial_block_interval: 1000
+        interval_ceiling: 1000
     start_block: 23900000
     contracts:
       - name: AaveOracle

@@ -5,6 +5,7 @@ networks:
     rpc_config:
       url: https://mainnet.base.org
       unstable__sync_config:
+        initial_block_interval: 1000
         interval_ceiling: 1000
     start_block: 2300000
     contracts:

@@ -5,6 +5,7 @@ type Feeupdated @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Feesdistributedtotreasury @entity {
@@ -15,6 +16,7 @@ type Feesdistributedtotreasury @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Flashmint @entity {
@@ -27,6 +29,7 @@ type Flashmint @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Ghotreasuryupdated @entity {
@@ -36,6 +39,7 @@ type Ghotreasuryupdated @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Approval @entity {
@@ -46,6 +50,7 @@ type Approval @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Facilitatoradded @entity {
@@ -56,6 +61,7 @@ type Facilitatoradded @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Facilitatorbucketcapacityupdated @entity {
@@ -66,6 +72,7 @@ type Facilitatorbucketcapacityupdated @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Facilitatorbucketlevelupdated @entity {
@@ -76,6 +83,7 @@ type Facilitatorbucketlevelupdated @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Facilitatorremoved @entity {
@@ -84,6 +92,7 @@ type Facilitatorremoved @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Roleadminchanged @entity {
@@ -94,6 +103,7 @@ type Roleadminchanged @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Rolegranted @entity {
@@ -104,6 +114,7 @@ type Rolegranted @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Rolerevoked @entity {
@@ -114,6 +125,7 @@ type Rolerevoked @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Transfer @entity {
@@ -124,6 +136,7 @@ type Transfer @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Upgraded @entity {
@@ -132,4 +145,5 @@ type Upgraded @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }

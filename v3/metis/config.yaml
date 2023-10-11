@@ -2,6 +2,11 @@ name: aave_v3_metis
 description: aave v3 metis indexer 
 networks: 
   - id: 1088
+    rpc_config:
+      url: https://andromeda.metis.io/?owner=1088
+      unstable__sync_config:
+        initial_block_interval: 1000
+        interval_ceiling: 1000
     start_block: 5440000 
     contracts:
       - name: AaveOracle
