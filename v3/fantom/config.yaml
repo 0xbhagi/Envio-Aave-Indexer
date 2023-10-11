@@ -2,6 +2,11 @@ name: aave_v3_fantom
 description: aave v3 fantom indexer 
 networks: 
   - id: 250
+    rpc_config:
+      url: https://rpc.ankr.com/fantom/
+      unstable__sync_config:
+        initial_block_interval: 1000
+        interval_ceiling: 1000
     start_block: 33100000
     contracts:
       - name: AaveOracle

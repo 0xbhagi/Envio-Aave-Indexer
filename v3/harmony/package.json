@@ -2,13 +2,13 @@
   "name": "aave_v2_harmony",
   "version": "0.1.0",
   "scripts": {
-      "codegen": "envio codegen",
-      "start": "node generated/src/Index.bs.js"
+    "codegen": "envio codegen",
+    "start": "node generated/src/Index.bs.js"
   },
   "devDependencies": {
     "rescript": "^10.1.2"
   },
   "dependencies": {
-    "envio": "0.0.18"
+    "envio": "0.0.0-main-20231010154033-656601c9"
   }
 }

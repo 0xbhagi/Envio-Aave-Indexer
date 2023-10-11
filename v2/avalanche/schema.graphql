@@ -5,6 +5,7 @@ type Assetsourceupdated @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Fallbackoracleupdated @entity {
@@ -13,6 +14,7 @@ type Fallbackoracleupdated @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Ownershiptransferred @entity {
@@ -22,6 +24,7 @@ type Ownershiptransferred @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Wethset @entity {
@@ -30,6 +33,7 @@ type Wethset @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Aggregatorupdated @entity {
@@ -39,6 +43,7 @@ type Aggregatorupdated @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Addressesproviderregistered @entity {
@@ -47,6 +52,7 @@ type Addressesproviderregistered @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }
 
 type Addressesproviderunregistered @entity {
@@ -55,4 +61,5 @@ type Addressesproviderunregistered @entity {
   evtBlockTime: BigInt!
   evtBlockNum: BigInt!
   contractAddress: Bytes!
+  evtTxnHash: Bytes!
 }

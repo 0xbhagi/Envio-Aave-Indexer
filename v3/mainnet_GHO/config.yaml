@@ -56,7 +56,7 @@ networks:
       - name: GhoVar #GhoVariableDebtToken
         handler: ./src/EventHandlers.js
         address:
-          - 0x786dBff3f1292ae8F92ea68Cf93c30b34B1ed04B
+          - 0x3FEaB6F8510C73E05b8C0Fdf96Df012E3A144319
         events:
          - event: "Upgraded(address indexed implementation)"
            requiredEntities: 
