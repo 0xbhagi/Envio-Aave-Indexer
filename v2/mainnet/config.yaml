@@ -94,7 +94,7 @@ networks:
         events:
          - event: "AssetSourceUpdated(address indexed token, address indexed source)"
            requiredEntities: 
-             - name: "Assetsourceupdated"
+             - name: "Oassetsourceupdated"
       - name: SwapAdapter #UniswapLiquiditySwapAdapter
         handler: ./src/EventHandlers.js
         address:
