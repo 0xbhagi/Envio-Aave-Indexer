@@ -2,6 +2,10 @@ name: aave_v3_base
 description: aave v3 base indexer 
 networks: 
   - id: 8453
+    rpc_config:
+      url: https://mainnet.base.org
+      unstable__sync_config:
+        interval_ceiling: 1000
     start_block: 2300000
     contracts:
       - name: AaveOracle
