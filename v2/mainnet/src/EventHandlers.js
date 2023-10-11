@@ -501,24 +501,24 @@ ProviderRegistryContract.OwnershipTransferred.handler((event, context) => {
 // AssetSourceUpdated event handler 
 OracleAnchorContract.AssetSourceUpdated.loader((event, context) => {
   let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
-  context.Assetsourceupdated.load(uniqueId);
+  context.Oassetsourceupdated.load(uniqueId);
 });
 
 OracleAnchorContract.AssetSourceUpdated.handler((event, context) => {
   let uniqueId = event.transactionHash + '-' + event.logIndex.toString();
-  let entity = context.Assetsourceupdated.get(uniqueId);
+  let entity = context.Oassetsourceupdated.get(uniqueId);
 
   if (!entity) {
     entity = {
       id: uniqueId,
-      asset: event.params.asset,
+      token: event.params.token,
       source: event.params.source,
       evtBlockTime: event.blockTimestamp,
       evtBlockNum: event.blockNumber,
       contractAddress: event.srcAddress,
       evtTxnHash: event.transactionHash
     };
-    context.Assetsourceupdated.set(entity);
+    context.Oassetsourceupdated.set(entity);
   }
 });
 // OwnershipTransferred event handler 

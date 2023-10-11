@@ -7,7 +7,15 @@ type Assetsourceupdated @entity {
   contractAddress: Bytes!
   evtTxnHash: Bytes!
 }
-
+type Oassetsourceupdated @entity {
+  id: ID!
+  token: Bytes!
+  source: Bytes!
+  evtBlockTime: BigInt!
+  evtBlockNum: BigInt!
+  contractAddress: Bytes!
+  evtTxnHash: Bytes!
+}
 type Fallbackoracleupdated @entity {
   id: ID!
   fallbackOracle: Bytes!
